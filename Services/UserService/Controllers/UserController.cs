@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using UserService.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using UserService.Services;
+using Common;
 
 namespace UserService.Controllers
 {
