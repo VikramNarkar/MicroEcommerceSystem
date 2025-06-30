@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Shared\Common\Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Shared\Contracts\Contracts\Contracts.csproj", "{24219839-E0CB-4AA7-9CE6-FD4F8B639D39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartService", "CartService\CartService.csproj", "{D65C0F37-5AA7-4257-A650-CF40C951C3E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{24219839-E0CB-4AA7-9CE6-FD4F8B639D39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24219839-E0CB-4AA7-9CE6-FD4F8B639D39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24219839-E0CB-4AA7-9CE6-FD4F8B639D39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D65C0F37-5AA7-4257-A650-CF40C951C3E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D65C0F37-5AA7-4257-A650-CF40C951C3E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D65C0F37-5AA7-4257-A650-CF40C951C3E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D65C0F37-5AA7-4257-A650-CF40C951C3E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,5 +79,6 @@ Global
 		{353D1F5B-556A-4A48-966F-72F11D0DDB30} = {00C10A80-1BE3-43A9-8755-E5B301FD806E}
 		{61F897CD-7555-4901-B399-7EB341D6C802} = {353D1F5B-556A-4A48-966F-72F11D0DDB30}
 		{24219839-E0CB-4AA7-9CE6-FD4F8B639D39} = {490B40CB-10F1-4802-8532-F2CDD6942E5D}
+		{D65C0F37-5AA7-4257-A650-CF40C951C3E9} = {7F7BAFE5-69F2-43D9-B012-DD1AF740DE20}
 	EndGlobalSection
 EndGlobal
