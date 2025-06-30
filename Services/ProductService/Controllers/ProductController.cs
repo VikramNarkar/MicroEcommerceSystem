@@ -44,7 +44,7 @@ namespace ProductService.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddProduct(CreateProductDto createProductDto)
+        public IActionResult AddProduct([FromBody] CreateProductDto createProductDto)
         {
             var product = _mapper.Map<Product>(createProductDto);
 

@@ -8,7 +8,8 @@ namespace CartService.Mapping
     {
         public CartMappingProfile() 
         { 
-            CreateMap<CartItem, CartItemDto>().ReverseMap();
+            CreateMap<CartItem, CartItemDto>();
+            CreateMap<AddToCartDto, CartItem>();
         }
     }
 }

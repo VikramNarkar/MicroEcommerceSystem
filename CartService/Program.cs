@@ -1,3 +1,6 @@
+using CartService.Services;
+using CartService.Services.Abstract;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +11,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddSingleton<ICartService, FakeCartService>();
 
 var app = builder.Build();
 
