@@ -1,6 +1,6 @@
 ﻿using UserService.Models;
 
-namespace UserService.Services
+namespace UserService.Repository
 {
     public class FakeUserService
     {

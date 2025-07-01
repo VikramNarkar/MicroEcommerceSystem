@@ -1,27 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UserService.Repository;
 using Common;
-using UserService.Repository.Abstract;
 
 namespace UserService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class FakeUserController : ControllerBase
     {
-        private readonly IRepoUserService _repoUserService;
+        private readonly FakeUserService _userService;
 
-        public UserController(IRepoUserService repoUserService)
+        public FakeUserController(FakeUserService fakeUserService)
         {
-            _repoUserService = repoUserService;            
+            _userService = fakeUserService;            
         }
 
         [HttpGet]
         public IActionResult GetUsers([FromQuery] int page = 1, [FromQuery] int pageSize = 5) 
         { 
-            var users = _repoUserService.GetPagedUsers(page, pageSize);
+            var users = _userService.GetPagedUsers(page, pageSize);
 
-            var total = _repoUserService.TotalCount;
+            var total = _userService.TotalCount;
 
             return Ok(new {
                 Page = page,

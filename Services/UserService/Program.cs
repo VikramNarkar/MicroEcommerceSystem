@@ -1,4 +1,7 @@
-using UserService.Services;
+using Microsoft.EntityFrameworkCore;
+using UserService.Data;
+using UserService.Repository;
+using UserService.Repository.Abstract;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +12,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<FakeUserService>();
+//builder.Services.AddSingleton<FakeUserService>();
+builder.Services.AddScoped<IRepoUserService, RepoUserService>();
+
+builder.Services.AddDbContext<UserDbContext>(options => 
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
