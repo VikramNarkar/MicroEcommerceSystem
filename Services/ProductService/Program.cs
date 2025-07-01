@@ -1,6 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using ProductService.Config;
-using ProductService.Services;
-using ProductService.Services.Abstract;
+using ProductService.Data;
+using ProductService.Repository;
+using ProductService.Repository.Abstract;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,9 +14,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IProductService, FakeProductService>();
+builder.Services.AddSingleton<FakeProductService>();
+builder.Services.AddScoped<IRepoProductService, RepoProductService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddDbContext<ProductDbContext>(options => 
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

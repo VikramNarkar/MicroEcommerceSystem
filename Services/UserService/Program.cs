@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//builder.Services.AddSingleton<FakeUserService>();
+builder.Services.AddSingleton<FakeUserService>();
 builder.Services.AddScoped<IRepoUserService, RepoUserService>();
 
 builder.Services.AddDbContext<UserDbContext>(options => 

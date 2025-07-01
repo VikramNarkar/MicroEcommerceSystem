@@ -1,9 +1,9 @@
 ﻿using ProductService.Models;
-using ProductService.Services.Abstract;
+using ProductService.Repository.Abstract;
 
-namespace ProductService.Services
+namespace ProductService.Repository
 {
-    public class FakeProductService : IProductService
+    public class FakeProductService : IRepoProductService
     {
         private List<Product> _products;
         public FakeProductService()

@@ -2,17 +2,18 @@
 using Microsoft.AspNetCore.Mvc;
 using ProductService.Dtos;
 using ProductService.Models;
+using ProductService.Repository;
 using ProductService.Repository.Abstract;
 
 namespace ProductService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class FakeProductController : ControllerBase
     {
-        private readonly IRepoProductService _productService;
+        private readonly FakeProductService _productService;
         private readonly IMapper _mapper;
-        public ProductController(IRepoProductService productService, IMapper mapper)
+        public FakeProductController(FakeProductService productService, IMapper mapper)
         {
             _productService = productService;
             _mapper = mapper;

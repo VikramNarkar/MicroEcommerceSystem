@@ -1,8 +1,8 @@
 ﻿using ProductService.Models;
 
-namespace ProductService.Services.Abstract
+namespace ProductService.Repository.Abstract
 {
-    public interface IProductService
+    public interface IRepoProductService
     {
         public List<Product> GetProducts();
         public Product GetProductById(int i);
