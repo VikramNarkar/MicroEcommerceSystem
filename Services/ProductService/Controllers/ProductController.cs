@@ -49,6 +49,7 @@ namespace ProductService.Controllers
             var product = _mapper.Map<Product>(createProductDto);
 
             var prod = _productService.AddProduct(product);
+
             return Ok(new { data = prod });
         }
     }

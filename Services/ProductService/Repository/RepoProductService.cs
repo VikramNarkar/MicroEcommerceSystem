@@ -27,6 +27,7 @@ namespace ProductService.Repository
         public Product AddProduct(Product product)
         {
             _productDbContext.Products.Add(product);
+            _productDbContext.SaveChanges();
             return product;
         }
     }
