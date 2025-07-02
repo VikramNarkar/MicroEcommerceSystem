@@ -19,9 +19,9 @@ namespace ProductService.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetProducts()
+        public async Task<IActionResult> GetProducts()
         {
-            var products = _productService.GetProducts();
+            var products = await _productService.GetProductsAsync();
             var productDtos = _mapper.Map<List<ProductDto>>(products);
 
             return Ok(new {
@@ -31,9 +31,9 @@ namespace ProductService.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetProductById(int id)
+        public async Task<IActionResult> GetProductById(int id)
         {
-            var product = _productService.GetProductById(id);
+            var product = await _productService.GetProductByIdAsync(id);
             var productDto = _mapper.Map<ProductDto>(product);
 
             return Ok(new
@@ -44,11 +44,11 @@ namespace ProductService.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddProduct([FromBody] CreateProductDto createProductDto)
+        public async Task<IActionResult> AddProduct([FromBody] CreateProductDto createProductDto)
         {
             var product = _mapper.Map<Product>(createProductDto);
 
-            var prod = _productService.AddProduct(product);
+            var prod = await _productService.AddProductAsync(product);
 
             return Ok(new { data = prod });
         }

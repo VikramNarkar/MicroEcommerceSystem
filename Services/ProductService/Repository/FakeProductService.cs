@@ -3,7 +3,7 @@ using ProductService.Repository.Abstract;
 
 namespace ProductService.Repository
 {
-    public class FakeProductService : IRepoProductService
+    public class FakeProductService //: IRepoProductService
     {
         private List<Product> _products;
         public FakeProductService()

@@ -4,9 +4,9 @@ namespace ProductService.Repository.Abstract
 {
     public interface IRepoProductService
     {
-        public List<Product> GetProducts();
-        public Product GetProductById(int i);
-        public Product AddProduct(Product product);
+        public Task<List<Product>> GetProductsAsync();
+        public Task<Product> GetProductByIdAsync(int i);
+        public Task<Product> AddProductAsync(Product product);
 
     }
 }

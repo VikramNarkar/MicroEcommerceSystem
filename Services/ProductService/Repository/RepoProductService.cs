@@ -1,4 +1,5 @@
-﻿using ProductService.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using ProductService.Data;
 using ProductService.Models;
 using ProductService.Repository.Abstract;
 
@@ -12,22 +13,20 @@ namespace ProductService.Repository
             _productDbContext = productDbContext;
         }
 
-        public Product GetProductById(int i)
+        public async Task<Product> GetProductByIdAsync(int i)
         {
-            var product = _productDbContext.Products.Find(i);
-            return product;
+            return await _productDbContext.Products.FindAsync(i);
         }
 
-        public List<Product> GetProducts()
+        public async Task<List<Product>> GetProductsAsync()
         {
-            var products = _productDbContext.Products.ToList();
-            return products;
+            return await _productDbContext.Products.ToListAsync();
         }
 
-        public Product AddProduct(Product product)
+        public async Task<Product> AddProductAsync(Product product)
         {
-            _productDbContext.Products.Add(product);
-            _productDbContext.SaveChanges();
+            await _productDbContext.Products.AddAsync(product);
+            await _productDbContext.SaveChangesAsync();
             return product;
         }
     }

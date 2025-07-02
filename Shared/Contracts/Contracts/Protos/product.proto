@@ -1,0 +1,20 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Contracts.Protos";
+
+package product;
+
+message GetProductRequest {
+  int32 id = 1;
+}
+
+message GetProductResponse {
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+  double cost = 4;
+}
+
+service ProductProtoService {
+  rpc GetProductById (GetProductRequest) returns (GetProductResponse);
+}
