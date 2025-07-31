@@ -1,8 +1,5 @@
-﻿using System.Threading.Tasks;
-using Contracts.Protos;
+﻿using Contracts.Protos;
 using Grpc.Core;
-using Microsoft.Extensions.Logging;
-using ProductService.Repository;
 using ProductService.Repository.Abstract;
 
 namespace ProductService.Grpc

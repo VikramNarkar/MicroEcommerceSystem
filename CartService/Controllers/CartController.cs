@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CartService.Business;
 using CartService.Dtos;
 using CartService.Models;
 using CartService.Services.Abstract;
@@ -13,12 +14,13 @@ namespace CartService.Controllers
     {
         private readonly ICartService _cartService;
         private readonly IMapper _mapper;
+        private readonly CartBusinessService _cartBusinessService;
 
-        public CartController(ICartService cartService, IMapper mapper)
+        public CartController(ICartService cartService, IMapper mapper, CartBusinessService cartBusinessService)
         {
             _cartService = cartService;
             _mapper = mapper;
-
+            _cartBusinessService = cartBusinessService;
         }
 
         [HttpGet]
@@ -58,6 +60,18 @@ namespace CartService.Controllers
                 total = result == null ? 0 : 1
             });
         
+        }
+
+        [HttpGet("product/{productId}")]
+        public async Task<IActionResult> GetProductById(int productId)
+        {
+            var product = await _cartBusinessService.GetProductDetails(productId);
+
+            return Ok(new
+            {
+                Message = "Product fetched from ProductService via gRPC!",
+                Product = product
+            });
         }
     }
 }
