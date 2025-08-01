@@ -25,6 +25,10 @@
 		<Protobuf Include="..\Shared\Contracts\Contracts\Protos\product.proto" GrpcServices="Client" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Business\BusinessAbstract\" />
+	</ItemGroup>
+
 	
 
 </Project>
