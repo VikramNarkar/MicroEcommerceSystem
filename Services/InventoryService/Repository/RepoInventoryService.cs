@@ -19,8 +19,8 @@ namespace InventoryService.Repository
         }
 
         public async Task<Inventory> UpdateInventoryAsync(Inventory inventory)
-        {
-            var existingInventory = await _dbContext.Inventories.FindAsync(inventory.Id);
+        {            
+            var existingInventory = await _dbContext.Inventories.FirstOrDefaultAsync(inv => inv.ProductId == inventory.ProductId);
 
             if (existingInventory == null)
                 throw new Exception($"Inventory with Id {inventory.Id} not found.");
