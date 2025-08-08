@@ -18,6 +18,14 @@ builder.Services.AddScoped<IRepoUserService, RepoUserService>();
 builder.Services.AddDbContext<UserDbContext>(options => 
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        b => b.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader());
+});                                     // For Angular
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,5 +40,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("AllowAll"); // Enables Angular frontend to make cross-origin API calls to this service
 
 app.Run();

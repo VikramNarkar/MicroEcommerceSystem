@@ -26,6 +26,13 @@ builder.Services.AddGrpcClient<ProductProtoService.ProductProtoServiceClient>(o 
     o.Address = new Uri("https://localhost:7002"); // Replace with ProductService's actual HTTPS URL
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        b => b.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader());
+});                                     // For Angular
 
 var app = builder.Build();
 
@@ -41,5 +48,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("AllowAll"); // Enables Angular frontend to make cross-origin API calls to this service
 
 app.Run();

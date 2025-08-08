@@ -31,6 +31,16 @@ builder.Services.AddDbContext<ProductDbContext>(options =>
 
 builder.Services.AddGrpc();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        b => b.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader());
+});                                     // For Angular
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -47,5 +57,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapGrpcService<ProductGrpcService>();
+
+app.UseCors("AllowAll"); // Enables Angular frontend to make cross-origin API calls to this service
 
 app.Run();
