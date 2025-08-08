@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using ProductService.Business.BusinessAbstract;
 using ProductService.Dtos;
 using ProductService.Models;
 using ProductService.Repository.Abstract;
@@ -10,9 +11,9 @@ namespace ProductService.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly IRepoProductService _productService;
+        private readonly IProductBusinessService _productService;
         private readonly IMapper _mapper;
-        public ProductController(IRepoProductService productService, IMapper mapper)
+        public ProductController(IProductBusinessService productService, IMapper mapper)
         {
             _productService = productService;
             _mapper = mapper;

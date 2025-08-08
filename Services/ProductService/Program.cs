@@ -5,6 +5,9 @@ using ProductService.Data;
 using ProductService.Grpc;
 using ProductService.Repository;
 using ProductService.Repository.Abstract;
+using Common.Messaging;
+using ProductService.Business.BusinessAbstract;
+using ProductService.Business;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +19,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<FakeProductService>();
+builder.Services.AddScoped<IProductBusinessService, ProductBusinessService>();
 builder.Services.AddScoped<IRepoProductService, RepoProductService>();
+
+builder.Services.AddSingleton<IRabbitMQProducer, RabbitMQProducer>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

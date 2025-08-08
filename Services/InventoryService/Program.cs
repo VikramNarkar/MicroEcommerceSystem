@@ -1,6 +1,7 @@
 using InventoryService.Business;
 using InventoryService.Business.BusinessAbstract;
 using InventoryService.Data;
+using InventoryService.Messaging;
 using InventoryService.Repository;
 using InventoryService.Repository.Abstract;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IRepoInventoryService, RepoInventoryService>();
 builder.Services.AddScoped<IInventoryBusinessService, InventoryBusinessService>();
+
+builder.Services.AddHostedService<ProductCreatedConsumer>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
